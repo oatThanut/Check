@@ -1,5 +1,6 @@
 package com.finalproject.softspec.check;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginEditText = (EditText) findViewById(R.id.emailEditText);
         passwordEditText = (EditText)findViewById(R.id.passwordEditText);
         findViewById(R.id.signInButton).setOnClickListener(this);
+        findViewById(R.id.signUpButton).setOnClickListener(this);
     }
 
     private void signIn(String email, String password) {
@@ -64,6 +66,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int i = v.getId();
         if (i == R.id.signInButton) {
             signIn(loginEditText.getText().toString(), passwordEditText.getText().toString());
+        } else if(i == R.id.signUpButton) {
+            startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+            Log.d(TAG, "TO signUpAct");
         }
     }
 
