@@ -50,12 +50,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        } else {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                        } else {
-
                         }
                     }
                 });
@@ -68,7 +68,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             signIn(loginEditText.getText().toString(), passwordEditText.getText().toString());
         } else if(i == R.id.signUpButton) {
             startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
-            Log.d(TAG, "TO signUpAct");
         }
     }
 
