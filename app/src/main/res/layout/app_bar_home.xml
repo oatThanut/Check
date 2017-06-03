@@ -18,18 +18,20 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
+        android:theme="@style/AppBarOverlay"
+        android:windowContentOverlay="@null">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#ffffffff"
-            android:theme="@style/Widget.AppCompat.ActionBar"
+            android:background="@null"
+            android:minHeight="250dp"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:popupTheme="@style/PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_home2" />
+    <include layout="@layout/content_home" />
 
 </android.support.design.widget.CoordinatorLayout>
