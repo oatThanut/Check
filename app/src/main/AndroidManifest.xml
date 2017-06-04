@@ -18,8 +18,8 @@
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity
-            android:name=".HomeActivity"
-            android:label="Home"
+            android:name=".MainActivity"
+            android:label=""
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 

@@ -1,9 +1,10 @@
 package com.finalproject.softspec.check;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,11 +12,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-public class HomeActivity extends AppCompatActivity
+import com.finalproject.softspec.check.groupScreen.GroupFragment;
+import com.finalproject.softspec.check.homeScreen.HomeFragment;
+import com.finalproject.softspec.check.profileScreen.ProfileFragment;
+
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button close;
@@ -23,7 +27,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,6 +49,14 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HomeFragment homeF = new HomeFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(
+                R.id.mainLayout,
+                homeF,
+                homeF.getTag()
+        ).commit();
     }
 
     @Override
@@ -80,12 +92,33 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // TODO segue to home
+            HomeFragment homeF = new HomeFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.mainLayout,
+                    homeF,
+                    homeF.getTag()
+            ).commit();
         } else if (id == R.id.nav_group) {
             // TODO segue to group
+            GroupFragment groupF = new GroupFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.mainLayout,
+                    groupF,
+                    groupF.getTag()
+            ).commit();
         } else if (id == R.id.nav_profile) {
-            // TODO segue to profile
+            ProfileFragment prifileF = new ProfileFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(
+                    R.id.mainLayout,
+                    prifileF,
+                    prifileF.getTag()
+            ).commit();
         } else if (id == R.id.nav_logout) {
             // TODO logout user
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else if (id == R.id.nav_close) {
             onBackPressed();
         }

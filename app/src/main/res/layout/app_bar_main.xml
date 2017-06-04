@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.finalproject.softspec.check.HomeActivity">
+    tools:context="com.finalproject.softspec.check.MainActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -32,6 +32,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_home" />
+    <include layout="@layout/content_main" />
 
 </android.support.design.widget.CoordinatorLayout>
