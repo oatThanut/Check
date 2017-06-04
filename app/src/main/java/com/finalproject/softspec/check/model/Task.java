@@ -10,9 +10,9 @@ public class Task {
     private String name;
     private Date date;
 
-    public Task (String inputName, Date inputDate) {
+    public Task (String inputName) {
         name = inputName;
-        date = inputDate;
+//        date = inputDate;
     }
 
     public String getName() {
@@ -33,6 +33,10 @@ public class Task {
 
     public void completeTask(){
 
+    }
+
+    public String toString () {
+        return name;
     }
 
 }

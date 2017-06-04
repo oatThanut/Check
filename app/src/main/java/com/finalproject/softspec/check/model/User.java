@@ -20,6 +20,8 @@ public class User {
         overdue = 0;
         primaryList = new ArrayList<Task>();
         groupList = new ArrayList<Group>();
+
+        primaryList.add(new Task("Demo"));
     }
 
     public static User getInstance() {
