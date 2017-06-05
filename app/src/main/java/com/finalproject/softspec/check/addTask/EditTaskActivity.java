@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -24,8 +25,10 @@ public class EditTaskActivity extends AppCompatActivity implements View.OnClickL
     private Group group;
     private EditText name;
     private int date_x, month_x, year_x, minute_x, hour_x;
-    private final int DATE_DIALOG_ID = 0;
-    private final int TIME_DIALOG_ID = 1;
+    private final int DATE_DIALOG_ID = 2;
+    private final int TIME_DIALOG_ID = 3;
+    private TextView date;
+    private TextView time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,11 @@ public class EditTaskActivity extends AppCompatActivity implements View.OnClickL
 
         name = (EditText) findViewById(R.id.nameEditText);
         name.setText(task.getName());
+
+        date = (TextView) findViewById(R.id.dateText);
+        time = (TextView) findViewById(R.id.timeText);
+        date.setText(task.getDate()+"/"+task.getMonth()+"/"+task.getYear());
+        time.setText(task.getHour()+":"+task.getMinute());
 
         findViewById(R.id.saveBtn).setOnClickListener(this);
         findViewById(R.id.deleteBtn).setOnClickListener(this);
@@ -69,6 +77,7 @@ public class EditTaskActivity extends AppCompatActivity implements View.OnClickL
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             minute_x = minute;
             hour_x = hourOfDay;
+            time.setText(hour_x+":"+minute_x);
             Toast.makeText(EditTaskActivity.this, hour_x +":"+minute_x,Toast.LENGTH_LONG).show();
         }
     };
@@ -79,6 +88,7 @@ public class EditTaskActivity extends AppCompatActivity implements View.OnClickL
             year_x = year;
             month_x = month + 1;
             date_x = dayOfMonth;
+            date.setText(date_x+"/"+month_x+"/"+year_x);
             Toast.makeText(EditTaskActivity.this, year_x +"/"+month_x+"/"+date_x,Toast.LENGTH_LONG).show();
 
         }
@@ -90,18 +100,24 @@ public class EditTaskActivity extends AppCompatActivity implements View.OnClickL
         if(group == null){
             if (i == R.id.saveBtn) {
                 user.changePTask(task.getId(), name.getText().toString());
+                onBackPressed();
             } else if(i == R.id.deleteBtn) {
                 user.deletePTask(task.getId());
+                onBackPressed();
             } else if(i == R.id.completeBtn) {
                 user.completePTask(task.getId());
+                onBackPressed();
             }
         } else {
             if (i == R.id.saveBtn) {
                 user.changeGTask(task.getId(), group.getId(), name.getText().toString());
+                onBackPressed();
             } else if(i == R.id.deleteBtn) {
                 user.deleteGTask(task.getId(), group.getId());
+                onBackPressed();
             } else if(i == R.id.completeBtn) {
                 user.completeGTask(task.getId(), group.getId());
+                onBackPressed();
             }
         }
         if(i == R.id.setDateBtn) {
@@ -109,6 +125,5 @@ public class EditTaskActivity extends AppCompatActivity implements View.OnClickL
         } else if(i == R.id.setTimeBtn) {
             showDialog(TIME_DIALOG_ID);
         }
-        onBackPressed();
     }
 }
