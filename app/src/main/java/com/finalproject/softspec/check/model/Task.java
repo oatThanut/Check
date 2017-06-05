@@ -10,20 +10,27 @@ import java.util.Date;
  */
 
 public class Task implements Parcelable {
-    private int id;
+    private int id, date, month, year, minute, hour;
     private String name;
-    private Date date;
     private static int taskCount;
 
-    public Task (String inputName) {
+    public Task (String inputName, int inputDate, int inputMonth, int inputYear, int inputMinute, int inputHour) {
         id = taskCount++;
+        date = inputDate;
+        month = inputMonth;
+        year = inputYear;
+        minute = inputMinute;
+        hour = inputHour;
         name = inputName;
-//        date = new Date();
-//        date = inputDate;
     }
 
     protected Task(Parcel in) {
         id = in.readInt();
+        date = in.readInt();
+        month = in.readInt();
+        year = in.readInt();
+        minute = in.readInt();
+        hour = in.readInt();
         name = in.readString();
     }
 
@@ -47,24 +54,52 @@ public class Task implements Parcelable {
         this.id = id;
     }
 
+    public int getDate() {
+        return date;
+    }
+
+    public void setDate(int date) {
+        this.date = date;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void completeTask(){
-
     }
 
     public String toString () {
@@ -79,6 +114,11 @@ public class Task implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
+        dest.writeInt(date);
+        dest.writeInt(month);
+        dest.writeInt(year);
+        dest.writeInt(minute);
+        dest.writeInt(hour);
         dest.writeString(name);
     }
 }

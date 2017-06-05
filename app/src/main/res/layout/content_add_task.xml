@@ -32,9 +32,24 @@
         android:text="Due Date:"
         android:textSize="30sp" />
 
-    <DatePicker
-        android:id="@+id/datePicker"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="30dp" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/setDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="set date" />
+
+        <Button
+            android:id="@+id/setTimeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="set time" />
+    </LinearLayout>
+
 </LinearLayout>
