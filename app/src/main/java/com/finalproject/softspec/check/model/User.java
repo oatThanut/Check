@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by oatThanut on 6/2/2017 AD.
  */
 
-public class User {
+public class User  {
     private static User instant;
     private String name;
     private int completed;
@@ -20,8 +20,6 @@ public class User {
         overdue = 0;
         primaryList = new ArrayList<Task>();
         groupList = new ArrayList<Group>();
-
-        primaryList.add(new Task("Demo"));
     }
 
     public static User getInstance() {
@@ -70,4 +68,23 @@ public class User {
     public void setOverdue(int overdue) {
         this.overdue = overdue;
     }
+
+    public void addTask(Task t) {
+        primaryList.add(t);
+    }
+
+    public void addGroup(Group g) {
+        groupList.add(g);
+    }
+
+    public void completeTask(Task t) {
+        primaryList.remove(t);
+        completed++;
+    }
+
+    public void deleteTask(Task t) {
+        primaryList.remove(t);
+    }
+
+
 }

@@ -1,7 +1,10 @@
 package com.finalproject.softspec.check.homeScreen;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +12,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.finalproject.softspec.check.MainActivity;
 import com.finalproject.softspec.check.R;
+import com.finalproject.softspec.check.addTask.AddTaskActivity;
 import com.finalproject.softspec.check.model.Task;
 import com.finalproject.softspec.check.model.User;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
 
+    private View view;
     private User user;
     private ListView listView;
     private ArrayAdapter<Task> adapter;
@@ -34,13 +41,36 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("Home");
         user = User.getInstance();
 
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
-        listView = (ListView) view.findViewById(R.id.listView);
-        adapter = new ArrayAdapter(getActivity(),
-                android.R.layout.simple_list_item_1, user.getPrimaryList());
-        listView.setAdapter(adapter);
+        view =  inflater.inflate(R.layout.home_add_task, container, false);
+
+        updateList();
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO impliment to be add task button
+//                Snackbar.make(view, "In home", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(getActivity(), AddTaskActivity.class);
+//                personIntent.putExtra("user", user);
+                startActivityForResult(intent, 0);
+            }
+        });
 
         return view;
     }
 
+    public void updateList() {
+        listView = (ListView) view.findViewById(R.id.listView);
+        adapter = new ArrayAdapter(getActivity(),
+                android.R.layout.simple_list_item_1, user.getPrimaryList());
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateList();
+    }
 }

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.finalproject.softspec.check.groupScreen.GroupFragment">
+    tools:context="com.finalproject.softspec.check.groupScreen.GroupFragment"
+    >
 
     <!-- TODO: Update blank fragment layout -->
 

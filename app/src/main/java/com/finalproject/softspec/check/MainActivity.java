@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button close;
+    private FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +32,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO impliment to be add task button
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // TODO impliment to be add task button
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // TODO segue to home
             HomeFragment homeF = new HomeFragment();
-            FragmentManager manager = getSupportFragmentManager();
+            manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.mainLayout,
                     homeF,
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_group) {
             // TODO segue to group
             GroupFragment groupF = new GroupFragment();
-            FragmentManager manager = getSupportFragmentManager();
+            manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.mainLayout,
                     groupF,
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity
             ).commit();
         } else if (id == R.id.nav_profile) {
             ProfileFragment prifileF = new ProfileFragment();
-            FragmentManager manager = getSupportFragmentManager();
+            manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
                     R.id.mainLayout,
                     prifileF,
