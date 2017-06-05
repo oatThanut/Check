@@ -32,7 +32,9 @@
         <activity
             android:name=".groupScreen.GroupListActivity"
             android:label="@string/title_activity_edit_group"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".groupScreen.EditGroupActivity" />
+        <activity android:name=".addTask.EditTaskActivity"></activity>
     </application>
 
 </manifest>

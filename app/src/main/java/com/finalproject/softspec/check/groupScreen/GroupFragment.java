@@ -65,7 +65,7 @@ public class GroupFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), GroupListActivity.class);
-                intent.putExtra("group", (Group) listView.getItemAtPosition(position));
+                intent.putExtra("group", (Group)listView.getItemAtPosition(position));
                 startActivityForResult(intent, 0);
             }
         });
