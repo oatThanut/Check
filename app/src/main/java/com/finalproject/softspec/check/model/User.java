@@ -20,7 +20,7 @@ public class User  {
         overdue = 0;
         primaryList = new ArrayList<Task>();
         groupList = new ArrayList<Group>();
-//        mockUp();
+        mockUp();
     }
 
     private void mockUp(){
@@ -90,6 +90,7 @@ public class User  {
         for(Task t : primaryList){
             if(t.getId() == id) {
                 t.setName(name);
+                break;
             }
         }
     }
@@ -99,6 +100,7 @@ public class User  {
             for(Task t : g.getList()){
                 if(t.getId() == id) {
                     t.setName(name);
+                    break;
                 }
             }
         }
@@ -114,6 +116,7 @@ public class User  {
             if(g.getId() == groupID) {
                 g.clean();
                 groupList.remove(g);
+                break;
             }
         }
     }
@@ -134,6 +137,7 @@ public class User  {
                 for(Task t : g.getList()){
                     if(t.getId() == id) {
                         g.getList().remove(t);
+                        break;
                     }
                 }
             }
@@ -144,6 +148,7 @@ public class User  {
         for(Task t : primaryList){
             if(t.getId() == id) {
                 primaryList.remove(t);
+                break;
             }
         }
     }
