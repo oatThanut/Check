@@ -20,6 +20,19 @@ public class User  {
         overdue = 0;
         primaryList = new ArrayList<Task>();
         groupList = new ArrayList<Group>();
+//        mockUp();
+    }
+
+    private void mockUp(){
+        primaryList.add(new Task("Demo 1", 5,5,2017,0,0));
+        primaryList.add(new Task("Demo 2", 5,5,2017,0,0));
+        primaryList.add(new Task("Demo 3", 5,5,2017,0,0));
+        groupList.add(new Group("Demo group1"));
+        groupList.get(0).addTask(new Task("Demo 1.1", 5,5,2017,0,0));
+        groupList.get(0).addTask(new Task("Demo 1.2", 5,5,2017,0,0));
+        groupList.add(new Group("Demo group2"));
+        groupList.get(1).addTask(new Task("Demo 2.1", 5,5,2017,0,0));
+        groupList.add(new Group("Demo group3"));
     }
 
     public static User getInstance() {
