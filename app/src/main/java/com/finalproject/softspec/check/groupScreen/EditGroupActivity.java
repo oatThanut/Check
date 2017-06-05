@@ -12,9 +12,6 @@ import com.finalproject.softspec.check.model.Group;
 import com.finalproject.softspec.check.model.User;
 
 public class EditGroupActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private Button saveBtn;
-    private Button deleteBtn;
     private EditText name;
     private User user;
     private Group group;
@@ -45,7 +42,7 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
             group.setName(name.getText().toString());
             onBackPressed();
         } else if(i == R.id.deleteBtn) {
-            user.getGroupList().remove(group);
+            user.deleteGroup(group.getId());
             onBackPressed();
         }
     }

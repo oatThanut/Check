@@ -72,6 +72,10 @@ public class Group implements Parcelable {
         return name;
     }
 
+    public void clean(){
+        list.clear();
+    }
+
     @Override
     public int describeContents() {
         return 0;

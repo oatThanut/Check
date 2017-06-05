@@ -9,12 +9,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.finalproject.softspec.check.MainActivity;
 import com.finalproject.softspec.check.R;
 import com.finalproject.softspec.check.addTask.AddTaskActivity;
+import com.finalproject.softspec.check.addTask.EditTaskActivity;
+import com.finalproject.softspec.check.groupScreen.GroupListActivity;
+import com.finalproject.softspec.check.model.Group;
 import com.finalproject.softspec.check.model.Task;
 import com.finalproject.softspec.check.model.User;
 
@@ -66,6 +70,14 @@ public class HomeFragment extends Fragment {
         adapter = new ArrayAdapter(getActivity(),
                 android.R.layout.simple_list_item_1, user.getPrimaryList());
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), EditTaskActivity.class);
+                intent.putExtra("task", (Task)listView.getItemAtPosition(position));
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 
     @Override

@@ -7,7 +7,8 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.finalproject.softspec.check.addTask.AddTaskActivity"
-    tools:showIn="@layout/activity_add_task">
+    tools:showIn="@layout/activity_add_task"
+    android:weightSum="1">
 
 
     <TextView
@@ -22,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Enter task name"
+        android:inputType="textPersonName" />
 
     <TextView
         android:layout_width="match_parent"
@@ -34,5 +35,6 @@
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp" />
 </LinearLayout>

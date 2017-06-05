@@ -15,7 +15,7 @@ public class User  {
     private ArrayList<Group> groupList;
 
     private User () {
-        name = "Mockup name";
+        name = "Mr.Mockup name";
         completed = 0;
         overdue = 0;
         primaryList = new ArrayList<Task>();
@@ -73,17 +73,66 @@ public class User  {
         primaryList.add(t);
     }
 
+    public void changePTask(int id, String name) {
+        for(Task t : primaryList){
+            if(t.getId() == id) {
+                t.setName(name);
+            }
+        }
+    }
+
+    public void changeGTask(int id, int groupID, String name) {
+        for(Group g : groupList) {
+            for(Task t : g.getList()){
+                if(t.getId() == id) {
+                    t.setName(name);
+                }
+            }
+        }
+
+    }
+
     public void addGroup(Group g) {
         groupList.add(g);
     }
 
-    public void completeTask(Task t) {
-        primaryList.remove(t);
+    public void deleteGroup(int groupID) {
+        for(Group g : groupList) {
+            if(g.getId() == groupID) {
+                g.clean();
+                groupList.remove(g);
+            }
+        }
+    }
+
+    public void completePTask(int id) {
+        deletePTask(id);
         completed++;
     }
 
-    public void deleteTask(Task t) {
-        primaryList.remove(t);
+    public void completeGTask(int id, int groupID) {
+        deleteGTask(id, groupID);
+        completed++;
+    }
+
+    public void deleteGTask(int id, int groupID) {
+        for(Group g : groupList) {
+            if(g.getId() == groupID) {
+                for(Task t : g.getList()){
+                    if(t.getId() == id) {
+                        g.getList().remove(t);
+                    }
+                }
+            }
+        }
+    }
+
+    public void deletePTask(int id) {
+        for(Task t : primaryList){
+            if(t.getId() == id) {
+                primaryList.remove(t);
+            }
+        }
     }
 
 

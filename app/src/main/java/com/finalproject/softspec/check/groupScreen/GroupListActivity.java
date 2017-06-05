@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.finalproject.softspec.check.R;
 import com.finalproject.softspec.check.addTask.AddTaskActivity;
+import com.finalproject.softspec.check.addTask.EditTaskActivity;
 import com.finalproject.softspec.check.model.Group;
 import com.finalproject.softspec.check.model.Task;
 import com.finalproject.softspec.check.model.User;
@@ -69,14 +70,15 @@ public class GroupListActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<Task>(this,
                 android.R.layout.simple_list_item_1, group.getList());
         listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(getActivity(), GroupListActivity.class);
-//                intent.putExtra("group", (Group) listView.getItemAtPosition(position));
-//                startActivityForResult(intent, 0);
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(GroupListActivity.this, EditTaskActivity.class);
+                intent.putExtra("task", (Task) listView.getItemAtPosition(position));
+                intent.putExtra("group", group);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

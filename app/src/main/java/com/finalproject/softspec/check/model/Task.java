@@ -10,16 +10,20 @@ import java.util.Date;
  */
 
 public class Task implements Parcelable {
+    private int id;
     private String name;
     private Date date;
+    private static int taskCount;
 
     public Task (String inputName) {
+        id = taskCount++;
         name = inputName;
 //        date = new Date();
 //        date = inputDate;
     }
 
     protected Task(Parcel in) {
+        id = in.readInt();
         name = in.readString();
     }
 
@@ -34,6 +38,14 @@ public class Task implements Parcelable {
             return new Task[size];
         }
     };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -66,6 +78,7 @@ public class Task implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
     }
 }
