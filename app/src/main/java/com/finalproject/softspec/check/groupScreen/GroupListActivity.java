@@ -89,7 +89,9 @@ public class GroupListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-
+                Intent personIntent = new Intent(GroupListActivity.this, EditGroupActivity.class);
+                personIntent.putExtra("group", group);
+                startActivityForResult(personIntent, 0);
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
@@ -101,6 +103,7 @@ public class GroupListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        groupName.setText(group.getName());
         updateList();
     }
 }

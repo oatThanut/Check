@@ -69,7 +69,7 @@ public class Group implements Parcelable {
     }
 
     public String toString() {
-        return name + id;
+        return name;
     }
 
     @Override
