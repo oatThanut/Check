@@ -43,6 +43,8 @@ public class EditGroupActivity extends AppCompatActivity implements View.OnClick
             onBackPressed();
         } else if(i == R.id.deleteBtn) {
             user.deleteGroup(group.getId());
+            Intent intent = new Intent(this, GroupListActivity.class);
+            intent.putExtra("isDeleted", true);
             onBackPressed();
         }
     }

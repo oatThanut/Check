@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -31,6 +32,7 @@ public class GroupListActivity extends AppCompatActivity {
     private TextView groupName;
     private ListView listView;
     private ArrayAdapter<Task> adapter;
+    private boolean isDeleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,5 +109,9 @@ public class GroupListActivity extends AppCompatActivity {
         super.onResume();
         groupName.setText(group.getName());
         updateList();
+        isDeleted = getIntent().getExtras().getBoolean("isDeleted");
+        if(isDeleted){
+            onBackPressed();
+        }
     }
 }
