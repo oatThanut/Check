@@ -63,8 +63,6 @@ public class AddTaskActivity extends AppCompatActivity implements View.OnClickLi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
                 if(group == null) {
                     System.out.println(">>>>"+ taskName.getText().toString());
                     user.addTask(new Task(taskName.getText().toString(), date_x, month_x, year_x, minute_x, hour_x));

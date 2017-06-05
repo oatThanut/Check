@@ -32,16 +32,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // TODO impliment to be add task button
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,7 +82,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // TODO segue to home
             HomeFragment homeF = new HomeFragment();
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
@@ -101,7 +90,6 @@ public class MainActivity extends AppCompatActivity
                     homeF.getTag()
             ).commit();
         } else if (id == R.id.nav_group) {
-            // TODO segue to group
             GroupFragment groupF = new GroupFragment();
             manager = getSupportFragmentManager();
             manager.beginTransaction().replace(
@@ -118,7 +106,6 @@ public class MainActivity extends AppCompatActivity
                     prifileF.getTag()
             ).commit();
         } else if (id == R.id.nav_logout) {
-            // TODO logout user
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } else if (id == R.id.nav_close) {
             onBackPressed();

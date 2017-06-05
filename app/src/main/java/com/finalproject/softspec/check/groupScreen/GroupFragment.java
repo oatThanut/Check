@@ -45,11 +45,8 @@ public class GroupFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO impliment to be add task button
-//                Snackbar.make(view, "In group", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+
                 Intent intent = new Intent(getActivity(), AddGroupActivity.class);
-//                personIntent.putExtra("user", user);
                 startActivityForResult(intent, 0);
             }
         });

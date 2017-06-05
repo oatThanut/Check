@@ -5,7 +5,6 @@
     android:orientation="vertical"
     tools:context="com.finalproject.softspec.check.profileScreen.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="match_parent"
